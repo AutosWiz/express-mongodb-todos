@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Todos</h5>
+        <ul class="list-group">
+          <% todos.forEach(todo => { %>
+          <li class="list-group-item d-flex justify-content-between">
+            <%= todo.title %>
+            <div class="d-flex flex-row">
+              <a href="/todos/<%= todo._id %>" class="btn btn-primary btn-sm mx-3">Show</a>
+              <form action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+              </form>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>
